@@ -1,0 +1,7 @@
+﻿services:
+  soda.api:
+    image: soda.api
+    build:
+      context: .
+      dockerfile: Soda.Api/Dockerfile
+

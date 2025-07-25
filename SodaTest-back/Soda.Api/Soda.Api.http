@@ -1,0 +1,6 @@
+@Soda.Api_HostAddress = http://localhost:5190
+
+GET {{Soda.Api_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

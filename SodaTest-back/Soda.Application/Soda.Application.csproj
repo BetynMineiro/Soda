@@ -1,0 +1,18 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net9.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+    <ItemGroup>
+        <PackageReference Include="FluentValidation" Version="12.0.0" />
+        <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="9.0.7" />
+        <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="9.0.7" />
+    </ItemGroup>
+    <ItemGroup>
+      <ProjectReference Include="..\Soda.CrossCutting\Soda.CrossCutting.csproj" />
+      <ProjectReference Include="..\Soda.Domain\Soda.Domain.csproj" />
+      <ProjectReference Include="..\Soda.Postgres.EF.Adapter\Soda.Postgres.EF.Adapter.csproj" />
+    </ItemGroup>
+</Project>
