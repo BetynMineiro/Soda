@@ -10,6 +10,7 @@ using Soda.Domain.DomainServices.Authentication.Interfaces.Authentication;
 using Soda.Domain.Entities;
 using Soda.Domain.Validators;
 using Soda.Domain.Validators.Authentication;
+using Soda.Domain.Validators.Employer;
 using Soda.Postgres.EF.Adapter.UnitOfWork;
 
 namespace Soda.Application.ApplicationServices.Services.Employers;
@@ -170,10 +171,10 @@ public class EmployerService(
         }
     }
 
-    public async Task<Employer?> GetByIdAsync(Guid id, CancellationToken cancellationToken)
+    public async Task<Employer?> GetByIdAsync(string id, CancellationToken cancellationToken)
     {
         var repo = unitOfWork.Repository<Employer>();
-        return await repo.GetByIdAsync(id, cancellationToken);
+        return await repo.GetByIdAsync(Guid.Parse(id), cancellationToken);
     }
 
     public async Task<Pagination<Employer>> GetAllAsync(PagedRequest request, CancellationToken cancellationToken)

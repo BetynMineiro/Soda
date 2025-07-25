@@ -31,6 +31,7 @@ public static class CrossCuttingModule
             .Enrich.WithThreadId()
             .Enrich.WithProperty("Application", applicationName)
             .Enrich.WithExceptionDetails()
+            .WriteTo.Console()
             .MinimumLevel.Is(LogEventLevel.Information)
             .WriteTo.OpenTelemetry(options =>
             {

@@ -1,7 +1,7 @@
 using FluentValidation;
-using Soda.Domain.Specification;
+using Soda.Domain.Specification.Employer;
 
-namespace Soda.Domain.Validators;
+namespace Soda.Domain.Validators.Employer;
 
 public interface IIsValidEmployerValidator : IValidator<Entities.Employer>;
 

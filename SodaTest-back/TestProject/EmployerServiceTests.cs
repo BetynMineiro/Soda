@@ -9,6 +9,7 @@ using Soda.Domain.DomainServices.Authentication.Interfaces.Authentication;
 using Soda.Domain.Entities;
 using Soda.Domain.Validators;
 using Soda.Domain.Validators.Authentication;
+using Soda.Domain.Validators.Employer;
 using Soda.Postgres.EF.Adapter.Repository.Base;
 using Soda.Postgres.EF.Adapter.UnitOfWork;
 

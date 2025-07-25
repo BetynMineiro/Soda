@@ -12,11 +12,11 @@ namespace Soda.Domain.DomainServices.Authentication.Services;
 
 public class AuthenticationService : IAuthenticationService
 {
-    private readonly ILogger _logger;
+    private readonly ILogger<AuthenticationService> _logger;
     private readonly AppSettingsConfig _appSettingsConfig;
     private readonly AuthenticationApiClient _client;
 
-    public AuthenticationService(ILogger logger, AppSettingsConfig appSettingsConfig)
+    public AuthenticationService(ILogger<AuthenticationService> logger, AppSettingsConfig appSettingsConfig)
     {
         _logger = logger;
         _appSettingsConfig = appSettingsConfig;

@@ -4,8 +4,10 @@ using Soda.Domain.DomainServices.Authentication.Services;
 using Soda.Domain.DomainServices.Users;
 using Soda.Domain.Specification;
 using Soda.Domain.Specification.Authentication;
+using Soda.Domain.Specification.Employer;
 using Soda.Domain.Validators;
 using Soda.Domain.Validators.Authentication;
+using Soda.Domain.Validators.Employer;
 
 namespace Soda.Domain;
 

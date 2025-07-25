@@ -1,10 +1,8 @@
 using FluentValidation;
 using Soda.Domain.DomainServices.Users;
-using Soda.Domain.Entities;
 using Soda.Domain.Repositories;
 
-
-namespace Soda.Domain.Specification;
+namespace Soda.Domain.Specification.Employer;
 public interface ICreateEmployerSpecification
 {
     void AddRuleTaxDocumentShouldNotEmpty(AbstractValidator<Entities.Employer> validator);
@@ -14,18 +12,18 @@ public interface ICreateEmployerSpecification
     void AddRuleExternalIdShouldNotEmpty(AbstractValidator<Entities.Employer> validator);
     void AddRuleBirthDayShouldNotEmpty(AbstractValidator<Entities.Employer> validator);
     void AddRuleBirthDayShouldValid(AbstractValidator<Entities.Employer> validator);
-    Task AddRuleTypeLevelShouldBeLessOrEqual(AbstractValidator<Employer> validator);
+    Task AddRuleTypeLevelShouldBeLessOrEqual(AbstractValidator<Entities.Employer> validator);
     void AddRuleShouldBeMajority(AbstractValidator<Entities.Employer> validator);
 }
 public class CreateEmployerSpecification(IEmployerRepository repository, UserServiceContext userServiceContext) : ICreateEmployerSpecification
 {
-    public void AddRuleTaxDocumentShouldNotEmpty(AbstractValidator<Employer> validator)
+    public void AddRuleTaxDocumentShouldNotEmpty(AbstractValidator<Entities.Employer> validator)
     {
         validator.RuleFor(entity => entity.TaxDocument)
             .NotEmpty().WithMessage("Tax document is required");
     }
 
-    public void AddRuleTaxDocumentShouldBeUnique(AbstractValidator<Employer> validator)
+    public void AddRuleTaxDocumentShouldBeUnique(AbstractValidator<Entities.Employer> validator)
     {
         validator.RuleFor(entity => entity.TaxDocument)
             .MustAsync(async (taxDocument, cancellationToken) =>
@@ -36,37 +34,37 @@ public class CreateEmployerSpecification(IEmployerRepository repository, UserSer
             .WithMessage("Tax document must be unique");
     }
 
-    public void AddRuleFirstNameShouldNotEmpty(AbstractValidator<Employer> validator)
+    public void AddRuleFirstNameShouldNotEmpty(AbstractValidator<Entities.Employer> validator)
     {
         validator.RuleFor(entity => entity.FirstName)
             .NotEmpty().WithMessage("First name is required");
     }
 
-    public void AddRuleLastNameShouldNotEmpty(AbstractValidator<Employer> validator)
+    public void AddRuleLastNameShouldNotEmpty(AbstractValidator<Entities.Employer> validator)
     {
         validator.RuleFor(entity => entity.LastName)
             .NotEmpty().WithMessage("Last name is required");
     }
 
-    public void AddRuleExternalIdShouldNotEmpty(AbstractValidator<Employer> validator)
+    public void AddRuleExternalIdShouldNotEmpty(AbstractValidator<Entities.Employer> validator)
     {
         validator.RuleFor(entity => entity.ExternalId)
             .NotEmpty().WithMessage("External ID is required");
     }
 
-    public void AddRuleBirthDayShouldNotEmpty(AbstractValidator<Employer> validator)
+    public void AddRuleBirthDayShouldNotEmpty(AbstractValidator<Entities.Employer> validator)
     {
         validator.RuleFor(entity => entity.BirthDate)
             .NotEmpty().WithMessage("Birth date is required");
     }
 
-    public void AddRuleBirthDayShouldValid(AbstractValidator<Employer> validator)
+    public void AddRuleBirthDayShouldValid(AbstractValidator<Entities.Employer> validator)
     {
         validator.RuleFor(entity => entity.BirthDate)
             .GreaterThan(DateOnly.MinValue).LessThan(DateOnly.MaxValue).WithMessage("Birth date must be valid");
     }
 
-    public Task AddRuleTypeLevelShouldBeLessOrEqual(AbstractValidator<Employer> validator)
+    public Task AddRuleTypeLevelShouldBeLessOrEqual(AbstractValidator<Entities.Employer> validator)
     {
         validator.RuleFor(entity => entity.Type)
             .MustAsync(async (newType, cancellationToken) =>
@@ -79,7 +77,7 @@ public class CreateEmployerSpecification(IEmployerRepository repository, UserSer
         return Task.CompletedTask;
     }
 
-    public void AddRuleShouldBeMajority(AbstractValidator<Employer> validator)
+    public void AddRuleShouldBeMajority(AbstractValidator<Entities.Employer> validator)
     {
         validator.RuleFor(entity => entity.Age)
             .GreaterThanOrEqualTo(18).WithMessage("Age must be 18 or greater");

@@ -12,6 +12,6 @@ public interface IEmployerService
     Task<EmployerResponse?> CreateAsync(CreateEmployerRequest request, CancellationToken cancellationToken);
     Task<EmployerResponse?> UpdateAsync(UpdateEmployerRequest request, CancellationToken cancellationToken);
     Task<EmployerResponse?> DeleteAsync(DeleteEmployerRequest request, CancellationToken cancellationToken);
-    Task<Employer?> GetByIdAsync(Guid id, CancellationToken cancellationToken);
+    Task<Employer?> GetByIdAsync(string id, CancellationToken cancellationToken);
     Task<Pagination<Employer>> GetAllAsync(PagedRequest request,CancellationToken cancellationToken);
 }
